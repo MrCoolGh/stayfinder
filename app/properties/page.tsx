@@ -1,6 +1,11 @@
 "use client";
 
-import { useEffect, useState, type FormEvent } from "react";
+import {
+    Suspense,
+    useEffect,
+    useState,
+    type FormEvent,
+} from "react";
 import Link from "next/link";
 import {
     ArrowLeft,
@@ -212,7 +217,13 @@ function InstagramIcon() {
         >
             <rect x="3" y="3" width="18" height="18" rx="5" />
             <circle cx="12" cy="12" r="4" />
-            <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+            <circle
+                cx="17.5"
+                cy="6.5"
+                r="1"
+                fill="currentColor"
+                stroke="none"
+            />
         </svg>
     );
 }
@@ -289,6 +300,7 @@ function LoginModal({
 
         window.setTimeout(onLoginSuccess, 1200);
     }
+
     return (
         <div
             className="fixed inset-0 z-[100] flex items-center justify-center bg-black/50 px-4 py-4"
@@ -331,7 +343,8 @@ function LoginModal({
                 </h2>
 
                 <p className="mt-1.5 text-center text-xs text-gray-500 dark:text-gray-400">
-                    Continue exploring properties and managing your StayFinder account.
+                    Continue exploring properties and managing your StayFinder
+                    account.
                 </p>
 
                 <form
@@ -399,11 +412,21 @@ function LoginModal({
 
                             <button
                                 type="button"
-                                onClick={() => setShowPassword((current) => !current)}
-                                aria-label={showPassword ? "Hide password" : "Show password"}
+                                onClick={() =>
+                                    setShowPassword((current) => !current)
+                                }
+                                aria-label={
+                                    showPassword
+                                        ? "Hide password"
+                                        : "Show password"
+                                }
                                 className="absolute right-3.5 top-1/2 -translate-y-1/2 cursor-pointer text-gray-400"
                             >
-                                {showPassword ? <EyeOff size={17} /> : <Eye size={17} />}
+                                {showPassword ? (
+                                    <EyeOff size={17} />
+                                ) : (
+                                    <Eye size={17} />
+                                )}
                             </button>
                         </div>
                     </div>
@@ -419,7 +442,9 @@ function LoginModal({
 
                 <div className="my-4 flex items-center gap-3">
                     <div className="h-px flex-1 bg-gray-200 dark:bg-gray-700" />
-                    <span className="text-[11px] font-medium text-gray-400">OR</span>
+                    <span className="text-[11px] font-medium text-gray-400">
+                        OR
+                    </span>
                     <div className="h-px flex-1 bg-gray-200 dark:bg-gray-700" />
                 </div>
 
@@ -492,14 +517,21 @@ function PropertyCard({
                 <button
                     type="button"
                     onClick={() => onToggleFavorite(property.id)}
-                    aria-label={isFavorite ? "Remove from favorites" : "Add to favorites"}
+                    aria-label={
+                        isFavorite
+                            ? "Remove from favorites"
+                            : "Add to favorites"
+                    }
                     className={`absolute right-4 top-4 flex h-9 w-9 cursor-pointer items-center justify-center rounded-full shadow-sm transition hover:scale-105 ${
                         isFavorite
                             ? "bg-red-100 text-red-600 dark:bg-red-950 dark:text-red-400"
                             : "bg-white text-gray-700 dark:bg-gray-800 dark:text-gray-200"
                     }`}
                 >
-                    <Heart size={19} fill={isFavorite ? "currentColor" : "none"} />
+                    <Heart
+                        size={19}
+                        fill={isFavorite ? "currentColor" : "none"}
+                    />
                 </button>
             </div>
 
@@ -512,8 +544,8 @@ function PropertyCard({
                     <div className="flex shrink-0 items-center gap-1 text-sm font-semibold">
                         <Star size={15} fill="currentColor" />
                         <span>
-              {property.rating} ({property.reviews})
-            </span>
+                            {property.rating} ({property.reviews})
+                        </span>
                     </div>
                 </div>
 
@@ -532,11 +564,13 @@ function PropertyCard({
                             : "bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-300"
                     }`}
                 >
-          {property.availability}
-        </span>
+                    {property.availability}
+                </span>
 
                 <p className="mt-2 text-sm text-gray-900 dark:text-gray-100">
-                    <span className="font-bold underline">{property.price}</span>{" "}
+                    <span className="font-bold underline">
+                        {property.price}
+                    </span>{" "}
                     {property.pricePeriod}
                 </p>
             </Link>
@@ -550,72 +584,163 @@ function Footer() {
             <div className="mx-auto max-w-7xl px-5 pb-0 pt-12 md:px-6 lg:pt-16">
                 <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
                     <div>
-                        <Link href="/" className="flex items-center gap-2 text-xl font-bold">
+                        <Link
+                            href="/"
+                            className="flex items-center gap-2 text-xl font-bold"
+                        >
                             <House size={25} className="text-yellow-500" />
                             StayFinder
                         </Link>
 
                         <p className="mt-4 max-w-xs text-sm leading-6 text-gray-500 dark:text-gray-400">
-                            Find comfortable, affordable, and reliable accommodation for your next stay.
+                            Find comfortable, affordable, and reliable
+                            accommodation for your next stay.
                         </p>
 
                         <div className="mt-6 flex items-center gap-3">
-                            <a href="#" className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-full bg-gray-100 text-gray-600 hover:bg-yellow-400 dark:bg-gray-800 dark:text-gray-300">
+                            <a
+                                href="#"
+                                className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-full bg-gray-100 text-gray-600 hover:bg-yellow-400 dark:bg-gray-800 dark:text-gray-300"
+                            >
                                 <FacebookIcon />
                             </a>
-                            <a href="#" className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-full bg-gray-100 text-gray-600 hover:bg-yellow-400 dark:bg-gray-800 dark:text-gray-300">
+
+                            <a
+                                href="#"
+                                className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-full bg-gray-100 text-gray-600 hover:bg-yellow-400 dark:bg-gray-800 dark:text-gray-300"
+                            >
                                 <InstagramIcon />
                             </a>
-                            <a href="#" className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-full bg-gray-100 text-gray-600 hover:bg-yellow-400 dark:bg-gray-800 dark:text-gray-300">
+
+                            <a
+                                href="#"
+                                className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-full bg-gray-100 text-gray-600 hover:bg-yellow-400 dark:bg-gray-800 dark:text-gray-300"
+                            >
                                 <TwitterIcon />
                             </a>
                         </div>
                     </div>
 
                     <div>
-                        <h3 className="text-sm font-bold uppercase tracking-wider">Explore</h3>
+                        <h3 className="text-sm font-bold uppercase tracking-wider">
+                            Explore
+                        </h3>
 
                         <div className="mt-4 space-y-3 text-sm text-gray-500 dark:text-gray-400">
-                            <Link href="/properties" className="block hover:text-yellow-500">Find properties</Link>
-                            <Link href="/properties?category=Hotels" className="block hover:text-yellow-500">Hotels</Link>
-                            <Link href="/properties?category=Hostels" className="block hover:text-yellow-500">Hostels</Link>
-                            <Link href="/properties?category=Apartments" className="block hover:text-yellow-500">Apartments</Link>
-                            <Link href="/properties?category=Houses" className="block hover:text-yellow-500">Houses</Link>
+                            <Link
+                                href="/properties"
+                                className="block hover:text-yellow-500"
+                            >
+                                Find properties
+                            </Link>
+                            <Link
+                                href="/properties?category=Hotels"
+                                className="block hover:text-yellow-500"
+                            >
+                                Hotels
+                            </Link>
+                            <Link
+                                href="/properties?category=Hostels"
+                                className="block hover:text-yellow-500"
+                            >
+                                Hostels
+                            </Link>
+                            <Link
+                                href="/properties?category=Apartments"
+                                className="block hover:text-yellow-500"
+                            >
+                                Apartments
+                            </Link>
+                            <Link
+                                href="/properties?category=Houses"
+                                className="block hover:text-yellow-500"
+                            >
+                                Houses
+                            </Link>
                         </div>
                     </div>
 
                     <div>
-                        <h3 className="text-sm font-bold uppercase tracking-wider">StayFinder</h3>
+                        <h3 className="text-sm font-bold uppercase tracking-wider">
+                            StayFinder
+                        </h3>
 
                         <div className="mt-4 space-y-3 text-sm text-gray-500 dark:text-gray-400">
-                            <Link href="/about" className="block hover:text-yellow-500">About us</Link>
-                            <Link href="/help" className="block hover:text-yellow-500">Help Center</Link>
-                            <Link href="/feedback" className="block hover:text-yellow-500">Send feedback</Link>
-                            <Link href="/signup" className="block hover:text-yellow-500">Become an advertiser</Link>
-                            <Link href="/privacy" className="block hover:text-yellow-500">Privacy policy</Link>
+                            <Link
+                                href="/about"
+                                className="block hover:text-yellow-500"
+                            >
+                                About us
+                            </Link>
+                            <Link
+                                href="/help"
+                                className="block hover:text-yellow-500"
+                            >
+                                Help Center
+                            </Link>
+                            <Link
+                                href="/feedback"
+                                className="block hover:text-yellow-500"
+                            >
+                                Send feedback
+                            </Link>
+                            <Link
+                                href="/signup"
+                                className="block hover:text-yellow-500"
+                            >
+                                Become an advertiser
+                            </Link>
+                            <Link
+                                href="/privacy"
+                                className="block hover:text-yellow-500"
+                            >
+                                Privacy policy
+                            </Link>
                         </div>
                     </div>
 
                     <div>
-                        <h3 className="text-sm font-bold uppercase tracking-wider">Contact us</h3>
+                        <h3 className="text-sm font-bold uppercase tracking-wider">
+                            Contact us
+                        </h3>
 
                         <div className="mt-4 space-y-4 text-sm text-gray-500 dark:text-gray-400">
                             <div className="flex items-start gap-3">
-                                <MapPin size={18} className="mt-0.5 text-yellow-500" />
+                                <MapPin
+                                    size={18}
+                                    className="mt-0.5 text-yellow-500"
+                                />
                                 <span>Accra, Ghana</span>
                             </div>
 
-                            <a href="mailto:support@stayfinder.com" className="flex items-center gap-3 hover:text-yellow-500">
-                                <Mail size={18} className="text-yellow-500" />
+                            <a
+                                href="mailto:support@stayfinder.com"
+                                className="flex items-center gap-3 hover:text-yellow-500"
+                            >
+                                <Mail
+                                    size={18}
+                                    className="text-yellow-500"
+                                />
                                 support@stayfinder.com
                             </a>
 
-                            <a href="tel:+233543877778" className="flex items-center gap-3 hover:text-yellow-500">
-                                <Phone size={18} className="text-yellow-500" />
+                            <a
+                                href="tel:+233543877778"
+                                className="flex items-center gap-3 hover:text-yellow-500"
+                            >
+                                <Phone
+                                    size={18}
+                                    className="text-yellow-500"
+                                />
                                 +233543877778
                             </a>
 
-                            <a href="https://wa.me/233543877778" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-green-600 hover:text-yellow-500">
+                            <a
+                                href="https://wa.me/233543877778"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center gap-3 text-green-600 hover:text-yellow-500"
+                            >
                                 <WhatsAppIcon />
                                 WhatsApp us
                             </a>
@@ -625,11 +750,23 @@ function Footer() {
 
                 <div className="mt-10 border-t border-gray-200 pb-4 pt-6 dark:border-gray-800">
                     <div className="flex flex-col gap-4 text-sm text-gray-500 dark:text-gray-400 sm:flex-row sm:items-center sm:justify-between">
-                        <p className="text-base font-medium">© 2026 StayFinder. All rights reserved.</p>
+                        <p className="text-base font-medium">
+                            © 2026 StayFinder. All rights reserved.
+                        </p>
 
                         <div className="flex gap-6 text-base font-medium">
-                            <Link href="/terms" className="hover:text-yellow-500">Terms</Link>
-                            <Link href="/privacy" className="hover:text-yellow-500">Privacy</Link>
+                            <Link
+                                href="/terms"
+                                className="hover:text-yellow-500"
+                            >
+                                Terms
+                            </Link>
+                            <Link
+                                href="/privacy"
+                                className="hover:text-yellow-500"
+                            >
+                                Privacy
+                            </Link>
                         </div>
                     </div>
                 </div>
@@ -638,7 +775,7 @@ function Footer() {
     );
 }
 
-export default function PropertiesPage() {
+function PropertiesContent() {
     const searchParams = useSearchParams();
     const selectedCategory = searchParams.get("category") ?? "All";
 
@@ -649,7 +786,9 @@ export default function PropertiesPage() {
     const [favoriteIds, setFavoriteIds] = useState<number[]>([]);
 
     useEffect(() => {
-        const savedFavorites = window.localStorage.getItem("stayfinder-favorites");
+        const savedFavorites = window.localStorage.getItem(
+            "stayfinder-favorites",
+        );
 
         if (!savedFavorites) return;
 
@@ -874,7 +1013,10 @@ export default function PropertiesPage() {
 
             <header className="sticky top-0 z-40 bg-white dark:bg-gray-950">
                 <div className="hidden h-24 items-center justify-between gap-8 px-6 md:mx-auto md:flex md:max-w-7xl">
-                    <Link href="/" className="flex items-center gap-2 text-2xl font-bold">
+                    <Link
+                        href="/"
+                        className="flex items-center gap-2 text-2xl font-bold"
+                    >
                         <House size={30} className="text-yellow-500" />
                         StayFinder
                     </Link>
@@ -883,7 +1025,9 @@ export default function PropertiesPage() {
                         <input
                             type="search"
                             value={searchQuery}
-                            onChange={(event) => setSearchQuery(event.target.value)}
+                            onChange={(event) =>
+                                setSearchQuery(event.target.value)
+                            }
                             placeholder="Search for a place"
                             className="min-w-0 flex-1 rounded-l-full bg-transparent px-4 py-2 text-sm outline-none"
                         />
@@ -918,7 +1062,9 @@ export default function PropertiesPage() {
 
                         <button
                             type="button"
-                            onClick={() => setIsMenuOpen((current) => !current)}
+                            onClick={() =>
+                                setIsMenuOpen((current) => !current)
+                            }
                             aria-label="Open menu"
                             className="flex h-11 w-11 cursor-pointer items-center justify-center rounded-full bg-gray-100 dark:bg-gray-800"
                         >
@@ -940,7 +1086,9 @@ export default function PropertiesPage() {
                         <input
                             type="search"
                             value={searchQuery}
-                            onChange={(event) => setSearchQuery(event.target.value)}
+                            onChange={(event) =>
+                                setSearchQuery(event.target.value)
+                            }
                             placeholder="Search for a place"
                             className="min-w-0 flex-1 rounded-l-full bg-transparent px-4 py-2 text-sm outline-none"
                         />
@@ -967,7 +1115,9 @@ export default function PropertiesPage() {
 
             <section className="mx-auto max-w-7xl px-5 py-8 md:px-6">
                 <div className="mb-8 text-center">
-                    <h1 className="text-2xl font-bold md:text-3xl">{pageTitle}</h1>
+                    <h1 className="text-2xl font-bold md:text-3xl">
+                        {pageTitle}
+                    </h1>
 
                     <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
                         Browse accommodation that matches your needs
@@ -987,7 +1137,10 @@ export default function PropertiesPage() {
                     </div>
                 ) : (
                     <div className="rounded-2xl border border-dashed border-gray-300 px-6 py-16 text-center dark:border-gray-700">
-                        <Heart size={42} className="mx-auto text-gray-400" />
+                        <Heart
+                            size={42}
+                            className="mx-auto text-gray-400"
+                        />
 
                         <h2 className="mt-4 text-lg font-bold">
                             {selectedCategory === "Favorites"
@@ -1029,7 +1182,9 @@ export default function PropertiesPage() {
                             className="flex flex-col items-center gap-1 text-gray-500 dark:text-gray-400"
                         >
                             <MessageCircle size={23} />
-                            <span className="text-xs font-medium">Messages</span>
+                            <span className="text-xs font-medium">
+                                Messages
+                            </span>
                         </Link>
 
                         <Link
@@ -1037,7 +1192,9 @@ export default function PropertiesPage() {
                             className="flex flex-col items-center gap-1 text-gray-500 dark:text-gray-400"
                         >
                             <Bell size={23} />
-                            <span className="text-xs font-medium">Notifications</span>
+                            <span className="text-xs font-medium">
+                                Notifications
+                            </span>
                         </Link>
 
                         <Link
@@ -1045,7 +1202,9 @@ export default function PropertiesPage() {
                             className="flex flex-col items-center gap-1 text-gray-500 dark:text-gray-400"
                         >
                             <UserCircle size={23} />
-                            <span className="text-xs font-medium">Profile</span>
+                            <span className="text-xs font-medium">
+                                Profile
+                            </span>
                         </Link>
                     </>
                 ) : (
@@ -1055,7 +1214,9 @@ export default function PropertiesPage() {
                             className="flex flex-col items-center gap-1 text-gray-500 dark:text-gray-400"
                         >
                             <MessageSquare size={23} />
-                            <span className="text-xs font-medium">Feedback</span>
+                            <span className="text-xs font-medium">
+                                Feedback
+                            </span>
                         </Link>
 
                         <button
@@ -1064,11 +1225,21 @@ export default function PropertiesPage() {
                             className="flex cursor-pointer flex-col items-center gap-1 text-gray-500 dark:text-gray-400"
                         >
                             <UserCircle size={23} />
-                            <span className="text-xs font-medium">Log in</span>
+                            <span className="text-xs font-medium">
+                                Log in
+                            </span>
                         </button>
                     </>
                 )}
             </nav>
         </main>
+    );
+}
+
+export default function PropertiesPage() {
+    return (
+        <Suspense fallback={null}>
+            <PropertiesContent />
+        </Suspense>
     );
 }
